@@ -4,12 +4,14 @@
 create extension if not exists pgcrypto;
 
 -- One row per advertiser's printed QR code / postcard slot.
--- advertiser_id is the Clerk user id of the advertiser (Clerk is wired up
--- in Supabase as a third-party auth provider, so auth.uid() below resolves
--- to this same id for a signed-in advertiser).
+-- advertiser_id is the Clerk user id of the advertiser, e.g.
+-- "user_3JWPHi2lBbTGzWAGUaFbSeaaj6U" — NOT a UUID, so it's stored as text.
+-- Clerk is wired up in Supabase as a third-party auth provider, and RLS
+-- below reads it back via auth.jwt()->>'sub' (auth.uid() won't work here:
+-- it casts to uuid internally and would error on a Clerk id).
 create table if not exists ad_slots (
   id uuid primary key default gen_random_uuid(),
-  advertiser_id uuid not null,
+  advertiser_id text not null,
   code text not null unique,
   business_name text not null,
   destination_url text not null,
@@ -47,7 +49,7 @@ create table if not exists leads (
 -- on (public/sw.js + components/EnableNotificationsButton.tsx).
 create table if not exists push_subscriptions (
   id uuid primary key default gen_random_uuid(),
-  advertiser_id uuid not null,
+  advertiser_id text not null,
   endpoint text not null unique,
   p256dh text not null,
   auth text not null,
@@ -68,7 +70,7 @@ create policy "Advertisers see own scans"
   on scans for select
   using (
     ad_slot_id in (
-      select id from ad_slots where advertiser_id = auth.uid()
+      select id from ad_slots where advertiser_id = (auth.jwt() ->> 'sub')
     )
   );
 
@@ -76,17 +78,17 @@ create policy "Advertisers see own leads"
   on leads for select
   using (
     ad_slot_id in (
-      select id from ad_slots where advertiser_id = auth.uid()
+      select id from ad_slots where advertiser_id = (auth.jwt() ->> 'sub')
     )
   );
 
 create policy "Advertisers see own ad slots"
   on ad_slots for select
-  using (advertiser_id = auth.uid());
+  using (advertiser_id = (auth.jwt() ->> 'sub'));
 
 create policy "Advertisers see own push subscriptions"
   on push_subscriptions for select
-  using (advertiser_id = auth.uid());
+  using (advertiser_id = (auth.jwt() ->> 'sub'));
 
 -- The redirect route (app/r/[code]/route.ts), the lead-capture endpoint
 -- (app/api/leads/route.ts) and the push-subscribe endpoint

@@ -78,7 +78,7 @@ create policy "Advertisers see own scans"
   on scans for select
   using (
     ad_slot_id in (
-      select id from ad_slots where advertiser_id = auth.uid()
+      select id from ad_slots where advertiser_id = (auth.jwt() ->> 'sub')
     )
   );
 
@@ -86,19 +86,23 @@ create policy "Advertisers see own leads"
   on leads for select
   using (
     ad_slot_id in (
-      select id from ad_slots where advertiser_id = auth.uid()
+      select id from ad_slots where advertiser_id = (auth.jwt() ->> 'sub')
     )
   );
 
 create policy "Advertisers see own ad slots"
   on ad_slots for select
-  using (advertiser_id = auth.uid());
+  using (advertiser_id = (auth.jwt() ->> 'sub'));
 ```
 
-`ad_slots.advertiser_id` is the advertiser's Clerk user id — Clerk is
-configured in the Supabase dashboard as a third-party auth provider, so
-`auth.uid()` resolves to that same id once `lib/supabase-clerk.ts` attaches
-the advertiser's Clerk session token to a Supabase request.
+`ad_slots.advertiser_id` is the advertiser's Clerk user id (e.g.
+`user_3JWPHi2lBbTGzWAGUaFbSeaaj6U`) stored as `text`, **not** `uuid` — Clerk
+ids aren't valid UUIDs. Clerk is configured in the Supabase dashboard as a
+third-party auth provider, and `auth.jwt() ->> 'sub'` reads that id back out
+of the token once `lib/supabase-clerk.ts` attaches the advertiser's Clerk
+session token to a Supabase request. Use `auth.jwt() ->> 'sub'` here, not
+`auth.uid()` — `auth.uid()` casts to `uuid` internally and throws on a
+Clerk id.
 
 The redirect route, lead-capture endpoint, and push-subscribe endpoint all
 use the service-role key, which bypasses RLS by design — they need to
