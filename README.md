@@ -122,8 +122,10 @@ app/
   r/[code]/OfferForm.tsx      The name/email form shown there, before forwarding on
   api/leads/route.ts          Lead capture, called from OfferForm
   api/push/subscribe/route.ts  Saves a push subscription for the signed-in advertiser
+  api/admin/ad-slots/route.ts  Creates an ad_slots row, admin-only
   code-not-found/page.tsx    Shown when a code doesn't match an active ad slot
   dashboard/                 Advertiser dashboard (protected by middleware.ts)
+  admin/                     Create ad slots + download QR codes (admin-only, see below)
   privacy/page.tsx           Renders docs/privacy-policy.md
 components/
   EnableNotificationsButton.tsx  Registers the service worker + push subscription
@@ -132,10 +134,31 @@ lib/
   supabase-clerk.ts           RLS-scoped client for the dashboard
   push.ts                     notifyAdvertiser() — sends web push, prunes stale subscriptions
   ip-hash.ts / device.ts / geo.ts   Scan-logging helpers
+  admin.ts                    isAdmin() — the ADMIN_USER_IDS allowlist check
 public/sw.js                  Service worker (push + notification click handling)
 supabase/schema.sql           Tables + RLS policies
 docs/privacy-policy.md        Source of truth for app/privacy/page.tsx
 ```
+
+## Admin: creating ad slots
+
+Go to `/admin` (signed in as a Clerk user listed in `ADMIN_USER_IDS`).
+Pick the advertiser from the dropdown (pulled live from Clerk's user
+list), fill in the business name, a URL-safe `code`, and their
+destination URL, and submit — that's one `ad_slots` row, i.e. one QR
+code. Each row gets a "Download" button that generates a PNG QR code
+encoding `https://<your-domain>/r/<code>`, ready to hand to a printer.
+
+An advertiser can have multiple ad slots (multiple postcard runs,
+multiple locations) — just create another row with a different `code`
+for the same advertiser; the dashboard already groups scans/leads per
+slot.
+
+`/admin` and `/api/admin/*` are gated two ways: `middleware.ts` requires
+any signed-in session, and the page/route themselves additionally check
+`isAdmin()` — being signed in isn't enough on its own, only Clerk user ids
+listed in `ADMIN_USER_IDS` get in. Anyone else hitting `/admin` is bounced
+to `/dashboard`.
 
 ## Local development
 
@@ -152,8 +175,8 @@ npm run dev
 - Fill in `[DATE]` and `[CONTACT EMAIL]` in `docs/privacy-policy.md` and
   `app/privacy/page.tsx` — kept in sync by hand, not generated from one
   source.
-- An admin flow for creating `ad_slots` rows per advertiser (this repo
-  assumes they already exist; there's no admin UI for provisioning a new
-  code yet — the sales pipeline tracker for that, business name, contact
-  info, slot type, pricing, lives outside this repo, in the advertiser
-  tracker spreadsheet).
+- Set `ADMIN_USER_IDS` so someone can actually reach `/admin` (see above).
+  The sales pipeline tracking itself (contact info, pricing, follow-up
+  dates) still lives outside this repo, in the advertiser tracker
+  spreadsheet — `/admin` only handles the technical side, creating the
+  `ad_slots` row and its QR code once a deal is closed.
