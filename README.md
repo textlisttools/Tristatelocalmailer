@@ -168,10 +168,20 @@ cp .env.example .env.local   # fill in the values above
 npm run dev
 ```
 
-## Still needed before launch
+## Status
 
-- Set `ADMIN_USER_IDS` so someone can actually reach `/admin` (see above).
-  The sales pipeline tracking itself (contact info, pricing, follow-up
-  dates) still lives outside this repo, in the advertiser tracker
-  spreadsheet — `/admin` only handles the technical side, creating the
-  `ad_slots` row and its QR code once a deal is closed.
+Technically complete and live at kyovaspotlight.com. The sales pipeline
+tracking itself (contact info, pricing, follow-up dates) lives outside
+this repo, in the advertiser tracker spreadsheet — `/admin` only handles
+the technical side, creating the `ad_slots` row and its QR code once a
+deal is closed.
+
+Optional, not blocking:
+- Clerk is still on dev/test keys, which work fine on the custom domain
+  but show a small Clerk branding badge and a "development mode" banner.
+  Switching to a production Clerk instance (live keys, a `clerk.` DNS
+  record) removes that — worth doing before real customer data flows
+  through sign-in at volume.
+- No automated tests. Every change so far has been verified with
+  `tsc --noEmit` + `next build` + a real Vercel preview deployment per
+  change, not a test suite.
