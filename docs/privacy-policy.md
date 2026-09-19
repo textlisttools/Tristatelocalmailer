@@ -1,8 +1,8 @@
-# Privacy Policy — Tri-State Local Mailer
+# Privacy Policy — KYOVA Spotlight
 
 *Last updated: [DATE]*
 
-Tri-State Local Mailer ("we," "us") operates the postcard mailing program and the QR code tracking system used by our advertising partners ("advertisers"). This policy explains what we collect when you scan a code on one of our postcards, and how that information is used.
+KYOVA Spotlight ("we," "us") operates the postcard mailing program and the QR code tracking system used by our advertising partners ("advertisers"). This policy explains what we collect when you scan a code on one of our postcards, and how that information is used.
 
 ## What we collect
 
@@ -15,7 +15,7 @@ Scanning the code takes you to a page we host, showing the business's name and o
 ## How this information is used
 
 - **The advertiser** whose code you scanned can see scan counts, general performance trends for their ad, and the contact list of anyone who opted in. They may use that list to follow up with you directly (for example, sending a coupon or promotion) — how they use it is between you and that business.
-- **Tri-State Local Mailer**, as the platform operator, has technical access to this data in order to operate the service, troubleshoot issues, and report aggregate performance trends (e.g., "this route averages 40 scans per run") back to advertisers and prospective advertisers. We do not use individual contact information for our own marketing, and we do not sell or share lead data between advertisers.
+- **KYOVA Spotlight**, as the platform operator, has technical access to this data in order to operate the service, troubleshoot issues, and report aggregate performance trends (e.g., "this route averages 40 scans per run") back to advertisers and prospective advertisers. We do not use individual contact information for our own marketing, and we do not sell or share lead data between advertisers.
 
 ## Your choices
 

@@ -21,7 +21,7 @@ self.addEventListener("push", (event) => {
     payload = { title: "New notification", body: event.data.text() };
   }
 
-  const title = payload.title || "Tri-State Local Mailer";
+  const title = payload.title || "KYOVA Spotlight";
   const options = {
     body: payload.body || "",
     icon: "/icon-192.png",

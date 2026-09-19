@@ -1,4 +1,4 @@
-# Tri-State Local Mailer
+# KYOVA Spotlight
 
 QR-code scan tracking, lead capture, and push-notification alerts for the
 advertisers on a local postcard mailing program. An advertiser gets a

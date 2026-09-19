@@ -1,6 +1,6 @@
 {
-  "name": "Tri-State Local Mailer",
-  "short_name": "TSLM",
+  "name": "KYOVA Spotlight",
+  "short_name": "KYOVA",
   "start_url": "/dashboard",
   "display": "standalone",
   "background_color": "#ffffff",

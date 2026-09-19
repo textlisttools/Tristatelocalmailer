@@ -12,7 +12,7 @@ let vapidConfigured = false;
 function ensureVapidConfigured() {
   if (vapidConfigured) return;
   webpush.setVapidDetails(
-    "mailto:hello@tristatelocalmailer.com",
+    "mailto:hello@kyovaspotlight.com",
     process.env.VAPID_PUBLIC_KEY!,
     process.env.VAPID_PRIVATE_KEY!
   );

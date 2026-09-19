@@ -18,7 +18,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Tri-State Local Mailer",
+  title: "KYOVA Spotlight",
   description: "QR scan tracking and lead capture for local postcard advertisers.",
   manifest: "/site.webmanifest",
 };

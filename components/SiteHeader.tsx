@@ -8,7 +8,7 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="site-header__inner">
         <Link href="/" className="site-header__brand">
-          <span className="site-header__brand-accent">Tri-State</span> Local Mailer
+          <span className="site-header__brand-accent">KYOVA</span> Spotlight
         </Link>
         <nav className="site-header__nav">
           <SignedIn>

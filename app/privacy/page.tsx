@@ -7,13 +7,13 @@ export default function PrivacyPolicyPage() {
     <>
       <SiteHeader />
       <main className="privacy-policy">
-      <h1>Privacy Policy — Tri-State Local Mailer</h1>
+      <h1>Privacy Policy — KYOVA Spotlight</h1>
       <p>
         <em>Last updated: [DATE]</em>
       </p>
 
       <p>
-        Tri-State Local Mailer (&quot;we,&quot; &quot;us&quot;) operates the postcard mailing
+        KYOVA Spotlight (&quot;we,&quot; &quot;us&quot;) operates the postcard mailing
         program and the QR code tracking system used by our advertising partners
         (&quot;advertisers&quot;). This policy explains what we collect when you scan a code on
         one of our postcards, and how that information is used.
@@ -43,7 +43,7 @@ export default function PrivacyPolicyPage() {
           promotion) — how they use it is between you and that business.
         </li>
         <li>
-          <strong>Tri-State Local Mailer</strong>, as the platform operator, has technical
+          <strong>KYOVA Spotlight</strong>, as the platform operator, has technical
           access to this data in order to operate the service, troubleshoot issues, and report
           aggregate performance trends (e.g., &quot;this route averages 40 scans per run&quot;) back
           to advertisers and prospective advertisers. We do not use individual contact

@@ -72,7 +72,7 @@ export default function HomePage() {
 
       <section className="hero">
         <div className="hero__inner">
-          <span className="hero__badge">Now signing up advertisers across the tri-state area</span>
+          <span className="hero__badge">Now signing up advertisers across KYOVA</span>
           <h1>Put your business in every mailbox on the route.</h1>
           <p>
             A postcard that lands in real mailboxes, with a QR code that tells you exactly
@@ -146,7 +146,7 @@ export default function HomePage() {
       <footer className="site-footer">
         <div className="site-footer__inner">
           <div>
-            <strong>Tri-State Local Mailer</strong>
+            <strong>KYOVA Spotlight</strong>
             <p>[SERVICE AREA]</p>
             <p>
               [EMAIL] · [PHONE]
