@@ -172,12 +172,8 @@ npm run dev
 
 - Real app icons at `public/icon-192.png` / `public/icon-512.png`
   (`public/sw.js` and `public/site.webmanifest` already reference them).
-- Fill in `[DATE]` and `[CONTACT EMAIL]` in `docs/privacy-policy.md` and
-  `app/privacy/page.tsx` — kept in sync by hand, not generated from one
-  source.
-- Fill in `[EMAIL]` and `[PHONE]` on the homepage (`app/page.tsx` — the CTA
-  banner and footer reference these). Service area is filled in already
-  (Kentucky, Ohio, West Virginia).
+  A logo/favicon is still needed — see the AI image generator prompt
+  discussed in the project chat.
 - Set `ADMIN_USER_IDS` so someone can actually reach `/admin` (see above).
   The sales pipeline tracking itself (contact info, pricing, follow-up
   dates) still lives outside this repo, in the advertiser tracker

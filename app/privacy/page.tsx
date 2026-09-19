@@ -1,7 +1,6 @@
 import { SiteHeader } from "@/components/SiteHeader";
 
-// Mirrors docs/privacy-policy.md. Keep the two in sync when this changes —
-// [DATE] and [CONTACT EMAIL] still need to be filled in before launch.
+// Mirrors docs/privacy-policy.md. Keep the two in sync when this changes.
 export default function PrivacyPolicyPage() {
   return (
     <>
@@ -9,7 +8,7 @@ export default function PrivacyPolicyPage() {
       <main className="privacy-policy">
       <h1>Privacy Policy — KYOVA Spotlight</h1>
       <p>
-        <em>Last updated: [DATE]</em>
+        <em>Last updated: September 19, 2026</em>
       </p>
 
       <p>
@@ -61,8 +60,9 @@ export default function PrivacyPolicyPage() {
         </li>
         <li>
           If you&apos;d like a business to remove your information from their list, contact that
-          business directly, or reach out to us at [CONTACT EMAIL] and we&apos;ll help facilitate
-          the request.
+          business directly, or reach out to us at{" "}
+          <a href="mailto:postcard@kyovaspotlight.com">postcard@kyovaspotlight.com</a> and
+          we&apos;ll help facilitate the request.
         </li>
       </ul>
 
@@ -75,15 +75,18 @@ export default function PrivacyPolicyPage() {
       <h2>Contact</h2>
       <p>
         Questions about this policy or a specific advertiser&apos;s use of your information:{" "}
-        <strong>[CONTACT EMAIL / PHONE]</strong>
+        <strong>
+          <a href="mailto:postcard@kyovaspotlight.com">postcard@kyovaspotlight.com</a> ·{" "}
+          <a href="tel:+13049623018">304-962-3018</a>
+        </strong>
       </p>
 
       <hr />
       <p>
         <em>
           This is a starting template, not legal advice — worth a quick review by an attorney
-          once you&apos;re capturing real customer data at volume, particularly if you expand
-          outside West Virginia.
+          once you&apos;re capturing real customer data at volume across all three states we
+          serve (Kentucky, Ohio, and West Virginia).
         </em>
       </p>
       </main>

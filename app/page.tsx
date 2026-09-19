@@ -126,8 +126,8 @@ export default function HomePage() {
           <h2>Spots fill up fast on every route.</h2>
           <p>Reach out to check what's available for the next run — no obligation.</p>
           <div className="cta-banner__contact">
-            <span>[EMAIL]</span>
-            <span>[PHONE]</span>
+            <a href="mailto:postcard@kyovaspotlight.com">postcard@kyovaspotlight.com</a>
+            <a href="tel:+13049623018">304-962-3018</a>
           </div>
         </div>
       </section>
@@ -150,7 +150,9 @@ export default function HomePage() {
             <strong>KYOVA Spotlight</strong>
             <p>Serving Kentucky, Ohio &amp; West Virginia</p>
             <p>
-              [EMAIL] · [PHONE]
+              <a href="mailto:postcard@kyovaspotlight.com">postcard@kyovaspotlight.com</a>
+              {" · "}
+              <a href="tel:+13049623018">304-962-3018</a>
             </p>
           </div>
           <div className="site-footer__links">

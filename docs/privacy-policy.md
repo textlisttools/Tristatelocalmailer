@@ -1,6 +1,6 @@
 # Privacy Policy — KYOVA Spotlight
 
-*Last updated: [DATE]*
+*Last updated: September 19, 2026*
 
 KYOVA Spotlight ("we," "us") operates the postcard mailing program and the QR code tracking system used by our advertising partners ("advertisers"). This policy explains what we collect when you scan a code on one of our postcards, and how that information is used.
 
@@ -20,7 +20,7 @@ Scanning the code takes you to a page we host, showing the business's name and o
 ## Your choices
 
 - Submitting your contact information is always optional — scanning the code and viewing the offer does not require it, and you can skip straight to the advertiser's site.
-- If you'd like a business to remove your information from their list, contact that business directly, or reach out to us at [CONTACT EMAIL] and we'll help facilitate the request.
+- If you'd like a business to remove your information from their list, contact that business directly, or reach out to us at postcard@kyovaspotlight.com and we'll help facilitate the request.
 
 ## Data retention
 
@@ -28,7 +28,7 @@ We retain scan and lead data for as long as needed to provide reporting to adver
 
 ## Contact
 
-Questions about this policy or a specific advertiser's use of your information: **[CONTACT EMAIL / PHONE]**
+Questions about this policy or a specific advertiser's use of your information: **postcard@kyovaspotlight.com · 304-962-3018**
 
 ---
-*This is a starting template, not legal advice — worth a quick review by an attorney once you're capturing real customer data at volume, particularly if you expand outside West Virginia.*
+*This is a starting template, not legal advice — worth a quick review by an attorney once you're capturing real customer data at volume across all three states we serve (Kentucky, Ohio, and West Virginia).*

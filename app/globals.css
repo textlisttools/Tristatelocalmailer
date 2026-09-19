@@ -281,6 +281,15 @@ button:disabled {
   font-size: 1.1rem;
 }
 
+.cta-banner__contact a {
+  color: white;
+  text-decoration: underline;
+}
+
+.cta-banner__contact a:hover {
+  color: var(--gold);
+}
+
 .faq-list {
   max-width: 720px;
   margin: 0 auto;
@@ -322,6 +331,15 @@ button:disabled {
 .site-footer p {
   margin: 0.35rem 0 0;
   font-size: 0.9rem;
+}
+
+.site-footer p a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+}
+
+.site-footer p a:hover {
+  color: var(--gold);
 }
 
 .site-footer__links {
