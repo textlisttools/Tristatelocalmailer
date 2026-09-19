@@ -1,6 +1,8 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 type OfferFormProps = {
   adSlotId: string;
@@ -58,6 +60,10 @@ export function OfferForm({ adSlotId, scanId, businessName, destinationUrl }: Of
 
   return (
     <main className="offer-page">
+      <Link href="/" className="offer-page__home">
+        <Image src="/icon-512.png" alt="" width={28} height={28} />
+        Home
+      </Link>
       <span className="offer-page__eyebrow">You're in — here's your offer</span>
       <h1>{businessName}</h1>
       <p>Enter your name and email for the offer, or skip straight to their site.</p>
