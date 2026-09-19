@@ -126,9 +126,17 @@ button:disabled {
 }
 
 .hero__inner {
-  max-width: 720px;
+  max-width: 962px;
   margin: 0 auto;
   text-align: left;
+}
+
+.hero__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  margin: 1.25rem 0 2rem;
 }
 
 .hero__badge {

@@ -75,12 +75,14 @@ export default function HomePage() {
       <section className="hero">
         <div className="hero__inner">
           <span className="hero__badge">Now signing up advertisers across KYOVA</span>
-          <h1>Put your business in every mailbox on the route.</h1>
-          <p>
-            A postcard that lands in real mailboxes, with a QR code that tells you exactly
-            who scanned it — name, email, and the moment it happened, sent straight to your
-            phone.
-          </p>
+          <Image
+            src="/hero.png"
+            alt="Real Mail. Real People. Real Results. Turn local mailboxes into local customers with trackable postcards."
+            width={962}
+            height={383}
+            priority
+            className="hero__image"
+          />
           <div className="hero__actions">
             <a href="#how-it-works" className="hero__cta">
               See how it works
