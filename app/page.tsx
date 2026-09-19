@@ -109,6 +109,13 @@ export default function HomePage() {
 
       <section id="how-it-works" className="section">
         <h2 className="section__title">How it works</h2>
+        <Image
+          src="/how-it-works.png"
+          alt="Your ad is created, your postcard is mailed, it's on the way to local homes, and your ad reaches local customers"
+          width={2172}
+          height={724}
+          className="how-it-works__image"
+        />
         <div className="step-grid">
           {steps.map((step) => (
             <div className="step-card" key={step.number}>
