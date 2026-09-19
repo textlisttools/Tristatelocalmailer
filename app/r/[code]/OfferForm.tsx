@@ -58,6 +58,7 @@ export function OfferForm({ adSlotId, scanId, businessName, destinationUrl }: Of
 
   return (
     <main className="offer-page">
+      <span className="offer-page__eyebrow">You're in — here's your offer</span>
       <h1>{businessName}</h1>
       <p>Enter your name and email for the offer, or skip straight to their site.</p>
       <form className="opt-in-form" onSubmit={handleSubmit}>

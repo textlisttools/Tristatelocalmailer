@@ -1,8 +1,12 @@
+import { SiteHeader } from "@/components/SiteHeader";
+
 // Mirrors docs/privacy-policy.md. Keep the two in sync when this changes —
 // [DATE] and [CONTACT EMAIL] still need to be filled in before launch.
 export default function PrivacyPolicyPage() {
   return (
-    <main className="privacy-policy">
+    <>
+      <SiteHeader />
+      <main className="privacy-policy">
       <h1>Privacy Policy — Tri-State Local Mailer</h1>
       <p>
         <em>Last updated: [DATE]</em>
@@ -82,6 +86,7 @@ export default function PrivacyPolicyPage() {
           outside West Virginia.
         </em>
       </p>
-    </main>
+      </main>
+    </>
   );
 }

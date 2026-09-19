@@ -1,4 +1,5 @@
 import { supabaseForAdvertiser } from "@/lib/supabase-clerk";
+import { SiteHeader } from "@/components/SiteHeader";
 import { DashboardClient } from "./DashboardClient";
 import type { AdSlot, Lead, Scan } from "@/types/database";
 
@@ -25,10 +26,13 @@ export default async function DashboardPage() {
     : [{ data: [] as Scan[] }, { data: [] as Lead[] }];
 
   return (
-    <DashboardClient
-      adSlots={adSlots}
-      scans={(scansResult.data ?? []) as Scan[]}
-      leads={(leadsResult.data ?? []) as Lead[]}
-    />
+    <>
+      <SiteHeader />
+      <DashboardClient
+        adSlots={adSlots}
+        scans={(scansResult.data ?? []) as Scan[]}
+        leads={(leadsResult.data ?? []) as Lead[]}
+      />
+    </>
   );
 }

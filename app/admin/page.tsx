@@ -2,6 +2,7 @@ import { auth, clerkClient } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { isAdmin } from "@/lib/admin";
 import { supabaseAdmin } from "@/lib/supabase-server";
+import { SiteHeader } from "@/components/SiteHeader";
 import { AdminClient } from "./AdminClient";
 import type { AdSlot } from "@/types/database";
 
@@ -33,6 +34,9 @@ export default async function AdminPage() {
   }));
 
   return (
-    <AdminClient adSlots={(adSlotsData ?? []) as AdSlot[]} advertisers={advertisers} />
+    <>
+      <SiteHeader />
+      <AdminClient adSlots={(adSlotsData ?? []) as AdSlot[]} advertisers={advertisers} />
+    </>
   );
 }
