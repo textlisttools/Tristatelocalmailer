@@ -74,28 +74,36 @@ export default function HomePage() {
 
       <section className="hero">
         <div className="hero__inner">
-          <span className="hero__badge">Now signing up advertisers across KYOVA</span>
+          <div className="hero__text">
+            <span className="hero__badge">Now signing up advertisers across KYOVA</span>
+            <h1>Put your business in every mailbox on the route.</h1>
+            <p>
+              A postcard that lands in real mailboxes, with a QR code that tells you exactly
+              who scanned it — name, email, and the moment it happened, sent straight to your
+              phone.
+            </p>
+            <div className="hero__actions">
+              <a href="#how-it-works" className="hero__cta">
+                See how it works
+              </a>
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <button>Already advertising? Sign in</button>
+                </SignInButton>
+              </SignedOut>
+              <SignedIn>
+                <Link href="/dashboard">Go to your dashboard</Link>
+              </SignedIn>
+            </div>
+          </div>
           <Image
-            src="/hero.png"
-            alt="Real Mail. Real People. Real Results. Turn local mailboxes into local customers with trackable postcards."
-            width={962}
-            height={383}
+            src="/hero-postcard.png"
+            alt="A KYOVA Spotlight postcard, with QR codes for local businesses, being pulled from a mailbox"
+            width={764}
+            height={508}
             priority
             className="hero__image"
           />
-          <div className="hero__actions">
-            <a href="#how-it-works" className="hero__cta">
-              See how it works
-            </a>
-            <SignedOut>
-              <SignInButton mode="modal">
-                <button>Already advertising? Sign in</button>
-              </SignInButton>
-            </SignedOut>
-            <SignedIn>
-              <Link href="/dashboard">Go to your dashboard</Link>
-            </SignedIn>
-          </div>
         </div>
       </section>
 

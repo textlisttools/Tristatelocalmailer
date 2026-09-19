@@ -126,9 +126,17 @@ button:disabled {
 }
 
 .hero__inner {
-  max-width: 962px;
+  max-width: 1080px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
   text-align: left;
+}
+
+.hero__text {
+  min-width: 0;
 }
 
 .hero__image {
@@ -136,7 +144,18 @@ button:disabled {
   width: 100%;
   height: auto;
   border-radius: var(--radius);
-  margin: 1.25rem 0 2rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 800px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .hero__image {
+    order: -1;
+  }
 }
 
 .hero__badge {
