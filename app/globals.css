@@ -172,10 +172,179 @@ button:disabled {
   text-decoration: underline;
 }
 
-.home-section {
+.hero__actions .hero__cta {
+  display: inline-block;
+  padding: 0.7rem 1.3rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  color: white;
+}
+
+.hero__actions .hero__cta:hover {
+  border-color: white;
+}
+
+/* Marketing page sections (homepage) */
+.section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 1.25rem;
+}
+
+.section--panel {
+  max-width: none;
+  background: var(--panel);
+}
+
+.section--panel > * {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section__title {
+  color: var(--navy);
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.step-grid,
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.75rem;
+}
+
+.step-card {
+  padding: 1.5rem;
+}
+
+.step-card__number {
+  display: block;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 800;
+  font-size: 1.75rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.step-card h3,
+.value-card h3 {
+  color: var(--navy);
+  font-size: 1.1rem;
+}
+
+.step-card p,
+.value-card p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.value-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.cta-banner {
+  background: var(--accent);
+  color: white;
+  padding: 3.5rem 1.25rem;
+  text-align: center;
+}
+
+.cta-banner__inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.cta-banner h2 {
+  color: white;
+  font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+}
+
+.cta-banner p {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+}
+
+.cta-banner__contact {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.faq-list {
   max-width: 720px;
   margin: 0 auto;
-  padding: 2.5rem 1.25rem 4rem;
+  display: grid;
+  gap: 1.75rem;
+}
+
+.faq-item h3 {
+  color: var(--navy);
+  font-size: 1.05rem;
+}
+
+.faq-item p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.site-footer {
+  background: var(--navy);
+  color: rgba(255, 255, 255, 0.75);
+  padding: 2.5rem 1.25rem;
+}
+
+.site-footer__inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.site-footer strong {
+  color: white;
+  font-family: var(--font-display), sans-serif;
+}
+
+.site-footer p {
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+}
+
+.site-footer__links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.site-footer__links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.site-footer__links a:hover {
+  color: var(--gold);
+}
+
+.site-footer__links button {
+  padding: 0.45rem 1rem;
+  font-size: 0.85rem;
 }
 
 /* Opt-in / lead capture form, used on the hosted offer page */
