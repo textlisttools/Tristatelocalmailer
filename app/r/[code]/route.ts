@@ -53,7 +53,17 @@ export async function GET(
     url: "/dashboard",
   });
 
-  const destination = new URL(adSlot.destination_url);
+  let destination: URL;
+  try {
+    // Tolerate a destination_url saved without a scheme (e.g.
+    // "www.example.com" instead of "https://www.example.com") — an easy
+    // mistake to make when adding ad_slots by hand in the Supabase table
+    // editor, and one bad row shouldn't 500 the redirect for a real visitor.
+    const raw = adSlot.destination_url;
+    destination = new URL(/^https?:\/\//i.test(raw) ? raw : `https://${raw}`);
+  } catch {
+    return NextResponse.redirect(new URL("/code-not-found", request.url));
+  }
   if (scan?.id) destination.searchParams.set("scan_id", scan.id);
 
   return NextResponse.redirect(destination);
