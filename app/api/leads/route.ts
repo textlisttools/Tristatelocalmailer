@@ -10,9 +10,9 @@ type LeadPayload = {
   phone?: string;
 };
 
-// Called by components/OptInForm.tsx from an advertiser's own destination
-// page. Uses the service-role client because the visitor submitting it
-// isn't authenticated at all.
+// Called by app/r/[code]/OfferForm.tsx, the hosted opt-in page a visitor
+// lands on after scanning. Uses the service-role client because the
+// visitor submitting it isn't authenticated at all.
 export async function POST(request: NextRequest) {
   const body = (await request.json().catch(() => null)) as LeadPayload | null;
 

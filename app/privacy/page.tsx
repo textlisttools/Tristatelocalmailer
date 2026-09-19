@@ -23,18 +23,19 @@ export default function PrivacyPolicyPage() {
         do not collect your name, email, or phone number just from scanning.
       </p>
       <p>
-        <strong>If you choose to enter your information:</strong> Some advertiser pages include
-        an optional form (for example, &quot;Enter your email for 10% off&quot;). If you fill this
-        out, we collect whatever you provide — typically name, email, and/or phone number — and
-        share it with the specific advertiser whose page you were on.
+        <strong>To continue on to the advertiser&apos;s offer:</strong> Scanning the code takes
+        you to a page we host, showing the business&apos;s name and offer. To continue on to that
+        business&apos;s own website, you&apos;re asked for your name and email (phone is
+        optional) — this is required to proceed, not optional. We collect what you provide there
+        and share it with the specific advertiser whose code you scanned.
       </p>
 
       <h2>How this information is used</h2>
       <ul>
         <li>
           <strong>The advertiser</strong> whose code you scanned can see scan counts, general
-          performance trends for their ad, and the contact list of anyone who opted in through
-          their form. They may use that list to follow up with you directly (for example,
+          performance trends for their ad, and the contact list of anyone who continued through
+          to their site. They may use that list to follow up with you directly (for example,
           sending a coupon or promotion) — how they use it is between you and that business.
         </li>
         <li>
@@ -50,8 +51,9 @@ export default function PrivacyPolicyPage() {
       <h2>Your choices</h2>
       <ul>
         <li>
-          Submitting your contact information on an advertiser&apos;s page is always optional —
-          scanning the code and viewing the offer does not require it.
+          Providing your name and email is required to continue on to an advertiser&apos;s site
+          after scanning — you can choose not to scan the code, or not to proceed past this
+          page, but we can&apos;t forward you to the offer without it.
         </li>
         <li>
           If you&apos;d like a business to remove your information from their list, contact that

@@ -1,20 +1,23 @@
-import { NextRequest, NextResponse } from "next/server";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 import { supabaseAdmin } from "@/lib/supabase-server";
 import { hashIp } from "@/lib/ip-hash";
 import { deviceTypeFromUserAgent } from "@/lib/device";
 import { geoFromHeaders } from "@/lib/geo";
 import { notifyAdvertiser } from "@/lib/push";
+import { OfferForm } from "./OfferForm";
 
 export const dynamic = "force-dynamic";
 
 // The link printed as a QR code on the postcard: /r/<code>. Logs the scan,
-// then 302s the visitor on to the advertiser's own destination page with
-// scan_id attached so an opt-in submitted there (components/OptInForm.tsx)
-// links back to this scan.
-export async function GET(
-  request: NextRequest,
-  { params }: { params: Promise<{ code: string }> }
-) {
+// then shows a hosted opt-in page (OfferForm) instead of redirecting
+// straight to the advertiser's site — that way an advertiser never has to
+// add anything to their own page to capture a lead.
+export default async function ScanPage({
+  params,
+}: {
+  params: Promise<{ code: string }>;
+}) {
   const { code } = await params;
   const supabase = supabaseAdmin();
 
@@ -25,18 +28,19 @@ export async function GET(
     .maybeSingle();
 
   if (!adSlot || adSlot.status !== "active") {
-    return NextResponse.redirect(new URL("/code-not-found", request.url));
+    redirect("/code-not-found");
   }
 
-  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
-  const geo = geoFromHeaders(request.headers);
+  const headersList = await headers();
+  const ip = headersList.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+  const geo = geoFromHeaders(headersList);
 
   const { data: scan } = await supabase
     .from("scans")
     .insert({
       ad_slot_id: adSlot.id,
       ip_hash: hashIp(ip),
-      device_type: deviceTypeFromUserAgent(request.headers.get("user-agent")),
+      device_type: deviceTypeFromUserAgent(headersList.get("user-agent")),
       city: geo.city,
       region: geo.region,
       country: geo.country,
@@ -53,18 +57,23 @@ export async function GET(
     url: "/dashboard",
   });
 
-  let destination: URL;
+  // Tolerate a destination_url saved without a scheme (e.g. "www.example.com"
+  // instead of "https://www.example.com") — an easy mistake to make when
+  // adding ad_slots by hand in the Supabase table editor.
+  let destination: string;
   try {
-    // Tolerate a destination_url saved without a scheme (e.g.
-    // "www.example.com" instead of "https://www.example.com") — an easy
-    // mistake to make when adding ad_slots by hand in the Supabase table
-    // editor, and one bad row shouldn't 500 the redirect for a real visitor.
     const raw = adSlot.destination_url;
-    destination = new URL(/^https?:\/\//i.test(raw) ? raw : `https://${raw}`);
+    destination = new URL(/^https?:\/\//i.test(raw) ? raw : `https://${raw}`).toString();
   } catch {
-    return NextResponse.redirect(new URL("/code-not-found", request.url));
+    redirect("/code-not-found");
   }
-  if (scan?.id) destination.searchParams.set("scan_id", scan.id);
 
-  return NextResponse.redirect(destination);
+  return (
+    <OfferForm
+      adSlotId={adSlot.id}
+      scanId={scan?.id ?? null}
+      businessName={adSlot.business_name}
+      destinationUrl={destination}
+    />
+  );
 }

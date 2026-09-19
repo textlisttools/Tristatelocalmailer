@@ -2,22 +2,24 @@
 
 QR-code scan tracking, lead capture, and push-notification alerts for the
 advertisers on a local postcard mailing program. An advertiser gets a
-printed QR code on their postcard slot; scanning it logs a visit, redirects
-to their own page, and — if the visitor opts in — captures a lead the
-advertiser is notified about instantly.
+printed QR code on their postcard slot; scanning it logs a visit, shows a
+hosted opt-in page, and forwards the visitor on to the advertiser's own
+site once they've given their name and email — the advertiser never has to
+add anything to their own page for any of this to work.
 
 ## How a scan flows through the app
 
 1. A visitor scans the QR code printed on the postcard, which points at
-   `/r/<code>` (`app/r/[code]/route.ts`).
-2. That route looks up the matching `ad_slots` row, logs a `scans` row
+   `/r/<code>` (`app/r/[code]/page.tsx`).
+2. That page looks up the matching `ad_slots` row, logs a `scans` row
    (device type, city/region, a salted IP hash — never the raw IP), fires a
-   push notification to the advertiser, and 302s the visitor on to
-   `ad_slots.destination_url` with `?scan_id=...` attached.
-3. The advertiser's destination page embeds `<OptInForm adSlotId="..." />`
-   (`components/OptInForm.tsx`), which reads `scan_id` off the query string
-   and POSTs to `/api/leads` (`app/api/leads/route.ts`) if the visitor opts
-   in. That also notifies the advertiser.
+   push notification to the advertiser, and renders a hosted opt-in page
+   (`app/r/[code]/OfferForm.tsx`) showing the business name.
+3. The visitor enters name + email (phone optional) — required to
+   continue. That POSTs to `/api/leads` (`app/api/leads/route.ts`), which
+   saves the lead, notifies the advertiser, and the page then forwards the
+   visitor on to `ad_slots.destination_url` — the advertiser's actual site,
+   completely unmodified.
 4. The advertiser dashboard (`app/dashboard`) shows scan counts and the
    lead list per ad slot, scoped to just their own data by Supabase RLS.
    From there they can enable push notifications
@@ -104,24 +106,24 @@ session token to a Supabase request. Use `auth.jwt() ->> 'sub'` here, not
 `auth.uid()` — `auth.uid()` casts to `uuid` internally and throws on a
 Clerk id.
 
-The redirect route, lead-capture endpoint, and push-subscribe endpoint all
-use the service-role key, which bypasses RLS by design — they need to
-write scans/leads/subscriptions for visitors and devices that aren't
-signed in at all. RLS is what protects the *read* side, when the
-advertiser dashboard queries Supabase directly.
+The scan page, lead-capture endpoint, and push-subscribe endpoint all use
+the service-role key, which bypasses RLS by design — they need to write
+scans/leads/subscriptions for visitors and devices that aren't signed in
+at all. RLS is what protects the *read* side, when the advertiser
+dashboard queries Supabase directly.
 
 ## Project structure
 
 ```
 app/
-  r/[code]/route.ts          Scan-logging redirect (the QR target)
-  api/leads/route.ts         Lead capture, called from OptInForm
+  r/[code]/page.tsx           Scan-logging + hosted opt-in page (the QR target)
+  r/[code]/OfferForm.tsx      The name/email form shown there, before forwarding on
+  api/leads/route.ts          Lead capture, called from OfferForm
   api/push/subscribe/route.ts  Saves a push subscription for the signed-in advertiser
   code-not-found/page.tsx    Shown when a code doesn't match an active ad slot
   dashboard/                 Advertiser dashboard (protected by middleware.ts)
   privacy/page.tsx           Renders docs/privacy-policy.md
 components/
-  OptInForm.tsx               Embed on an advertiser's destination page
   EnableNotificationsButton.tsx  Registers the service worker + push subscription
 lib/
   supabase-server.ts          Service-role client (server-only)
@@ -150,7 +152,6 @@ npm run dev
   source.
 - An admin flow for creating `ad_slots` rows per advertiser (this repo
   assumes they already exist; there's no admin UI for provisioning a new
-  code yet).
-- A per-advertiser destination page that embeds `<OptInForm />` — the sales
-  pipeline tracker (business name, contact info, slot type, pricing) lives
-  outside this repo, in the advertiser tracker spreadsheet.
+  code yet — the sales pipeline tracker for that, business name, contact
+  info, slot type, pricing, lives outside this repo, in the advertiser
+  tracker spreadsheet).
