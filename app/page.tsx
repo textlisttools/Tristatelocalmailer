@@ -6,7 +6,7 @@ const steps = [
   {
     number: "01",
     title: "Reserve your spot",
-    body: "Pick a slot on our next postcard route. [SERVICE AREA] households get it — guaranteed, no algorithm deciding who sees it.",
+    body: "Pick a slot on our next postcard route across Kentucky, Ohio, or West Virginia. Every household on that route gets it — guaranteed, no algorithm deciding who sees it.",
   },
   {
     number: "02",
@@ -57,7 +57,8 @@ const faqs = [
   },
   {
     question: "What's the coverage area?",
-    answer: "[SERVICE AREA]",
+    answer:
+      "We mail postcard routes across Kentucky, Ohio, and West Virginia — the KYOVA tri-state area.",
   },
   {
     question: "How much does a spot cost?",
@@ -147,7 +148,7 @@ export default function HomePage() {
         <div className="site-footer__inner">
           <div>
             <strong>KYOVA Spotlight</strong>
-            <p>[SERVICE AREA]</p>
+            <p>Serving Kentucky, Ohio &amp; West Virginia</p>
             <p>
               [EMAIL] · [PHONE]
             </p>

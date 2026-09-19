@@ -175,9 +175,9 @@ npm run dev
 - Fill in `[DATE]` and `[CONTACT EMAIL]` in `docs/privacy-policy.md` and
   `app/privacy/page.tsx` — kept in sync by hand, not generated from one
   source.
-- Fill in `[SERVICE AREA]`, `[EMAIL]`, and `[PHONE]` on the homepage
-  (`app/page.tsx` — the "how it works" step, FAQ, CTA banner, and footer
-  all reference these).
+- Fill in `[EMAIL]` and `[PHONE]` on the homepage (`app/page.tsx` — the CTA
+  banner and footer reference these). Service area is filled in already
+  (Kentucky, Ohio, West Virginia).
 - Set `ADMIN_USER_IDS` so someone can actually reach `/admin` (see above).
   The sales pipeline tracking itself (contact info, pricing, follow-up
   dates) still lives outside this repo, in the advertiser tracker
