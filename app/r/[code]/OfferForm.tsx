@@ -10,8 +10,9 @@ type OfferFormProps = {
 };
 
 // The hosted opt-in page a visitor lands on after scanning. Name and email
-// are required to continue on to the advertiser's own site — this is what
-// lets an advertiser capture leads without adding anything to their page.
+// are optional — a visitor can skip straight to the advertiser's site — but
+// submitting captures a lead without the advertiser having to add anything
+// to their own page.
 export function OfferForm({ adSlotId, scanId, businessName, destinationUrl }: OfferFormProps) {
   const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
 
@@ -20,6 +21,16 @@ export function OfferForm({ adSlotId, scanId, businessName, destinationUrl }: Of
     setStatus("submitting");
 
     const form = new FormData(event.currentTarget);
+    const email = form.get("email");
+    const phone = form.get("phone");
+
+    // Nothing entered — same as clicking the skip link, just via Enter/the
+    // button. /api/leads requires at least one of email/phone, so calling
+    // it here would just 400.
+    if (!email && !phone) {
+      window.location.href = destinationUrl;
+      return;
+    }
 
     try {
       const res = await fetch("/api/leads", {
@@ -29,8 +40,8 @@ export function OfferForm({ adSlotId, scanId, businessName, destinationUrl }: Of
           ad_slot_id: adSlotId,
           scan_id: scanId,
           name: form.get("name"),
-          email: form.get("email"),
-          phone: form.get("phone"),
+          email,
+          phone,
         }),
       });
 
@@ -48,10 +59,10 @@ export function OfferForm({ adSlotId, scanId, businessName, destinationUrl }: Of
   return (
     <main className="offer-page">
       <h1>{businessName}</h1>
-      <p>Enter your name and email to continue on to their site and view the offer.</p>
+      <p>Enter your name and email for the offer, or skip straight to their site.</p>
       <form className="opt-in-form" onSubmit={handleSubmit}>
-        <input name="name" type="text" placeholder="Name" autoComplete="name" required />
-        <input name="email" type="email" placeholder="Email" autoComplete="email" required />
+        <input name="name" type="text" placeholder="Name" autoComplete="name" />
+        <input name="email" type="email" placeholder="Email" autoComplete="email" />
         <input name="phone" type="tel" placeholder="Phone (optional)" autoComplete="tel" />
         <button type="submit" disabled={status === "submitting"}>
           {status === "submitting" ? "Submitting…" : "Continue"}
@@ -60,6 +71,9 @@ export function OfferForm({ adSlotId, scanId, businessName, destinationUrl }: Of
           <p className="opt-in-form__error">Something went wrong — try again.</p>
         )}
       </form>
+      <a className="offer-page__skip" href={destinationUrl}>
+        No thanks, just take me to their site
+      </a>
     </main>
   );
 }

@@ -56,6 +56,13 @@ button:disabled {
   color: #b3261e;
 }
 
+.offer-page__skip {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
 .dashboard__header {
   display: flex;
   align-items: center;

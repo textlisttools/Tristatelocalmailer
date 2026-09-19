@@ -23,20 +23,20 @@ export default function PrivacyPolicyPage() {
         do not collect your name, email, or phone number just from scanning.
       </p>
       <p>
-        <strong>To continue on to the advertiser&apos;s offer:</strong> Scanning the code takes
-        you to a page we host, showing the business&apos;s name and offer. To continue on to that
-        business&apos;s own website, you&apos;re asked for your name and email (phone is
-        optional) — this is required to proceed, not optional. We collect what you provide there
-        and share it with the specific advertiser whose code you scanned.
+        <strong>If you choose to enter your information:</strong> Scanning the code takes you to
+        a page we host, showing the business&apos;s name and offer, with an optional form (name,
+        email, phone). If you fill this out, we collect whatever you provide and share it with
+        the specific advertiser whose code you scanned. You can also skip straight to that
+        business&apos;s own website without entering anything.
       </p>
 
       <h2>How this information is used</h2>
       <ul>
         <li>
           <strong>The advertiser</strong> whose code you scanned can see scan counts, general
-          performance trends for their ad, and the contact list of anyone who continued through
-          to their site. They may use that list to follow up with you directly (for example,
-          sending a coupon or promotion) — how they use it is between you and that business.
+          performance trends for their ad, and the contact list of anyone who opted in. They may
+          use that list to follow up with you directly (for example, sending a coupon or
+          promotion) — how they use it is between you and that business.
         </li>
         <li>
           <strong>Tri-State Local Mailer</strong>, as the platform operator, has technical
@@ -51,9 +51,9 @@ export default function PrivacyPolicyPage() {
       <h2>Your choices</h2>
       <ul>
         <li>
-          Providing your name and email is required to continue on to an advertiser&apos;s site
-          after scanning — you can choose not to scan the code, or not to proceed past this
-          page, but we can&apos;t forward you to the offer without it.
+          Submitting your contact information is always optional — scanning the code and
+          viewing the offer does not require it, and you can skip straight to the
+          advertiser&apos;s site.
         </li>
         <li>
           If you&apos;d like a business to remove your information from their list, contact that

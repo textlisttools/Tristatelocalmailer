@@ -9,17 +9,17 @@ Tri-State Local Mailer ("we," "us") operates the postcard mailing program and th
 **When you scan a QR code:**
 We automatically log the scan itself — the time, the general device type (phone, tablet, computer), and an approximate location based on your network connection (city/region level only, not a precise address). We do not collect your name, email, or phone number just from scanning.
 
-**To continue on to the advertiser's offer:**
-Scanning the code takes you to a page we host, showing the business's name and offer. To continue on to that business's own website, you're asked for your name and email (phone is optional) — this is required to proceed, not optional. We collect what you provide there and share it with the specific advertiser whose code you scanned.
+**If you choose to enter your information:**
+Scanning the code takes you to a page we host, showing the business's name and offer, with an optional form (name, email, phone). If you fill this out, we collect whatever you provide and share it with the specific advertiser whose code you scanned. You can also skip straight to that business's own website without entering anything.
 
 ## How this information is used
 
-- **The advertiser** whose code you scanned can see scan counts, general performance trends for their ad, and the contact list of anyone who continued through to their site. They may use that list to follow up with you directly (for example, sending a coupon or promotion) — how they use it is between you and that business.
+- **The advertiser** whose code you scanned can see scan counts, general performance trends for their ad, and the contact list of anyone who opted in. They may use that list to follow up with you directly (for example, sending a coupon or promotion) — how they use it is between you and that business.
 - **Tri-State Local Mailer**, as the platform operator, has technical access to this data in order to operate the service, troubleshoot issues, and report aggregate performance trends (e.g., "this route averages 40 scans per run") back to advertisers and prospective advertisers. We do not use individual contact information for our own marketing, and we do not sell or share lead data between advertisers.
 
 ## Your choices
 
-- Providing your name and email is required to continue on to an advertiser's site after scanning — you can choose not to scan the code, or not to proceed past this page, but we can't forward you to the offer without it.
+- Submitting your contact information is always optional — scanning the code and viewing the offer does not require it, and you can skip straight to the advertiser's site.
 - If you'd like a business to remove your information from their list, contact that business directly, or reach out to us at [CONTACT EMAIL] and we'll help facilitate the request.
 
 ## Data retention

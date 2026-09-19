@@ -4,8 +4,9 @@ QR-code scan tracking, lead capture, and push-notification alerts for the
 advertisers on a local postcard mailing program. An advertiser gets a
 printed QR code on their postcard slot; scanning it logs a visit, shows a
 hosted opt-in page, and forwards the visitor on to the advertiser's own
-site once they've given their name and email — the advertiser never has to
-add anything to their own page for any of this to work.
+site — whether or not they choose to share their name and email first —
+the advertiser never has to add anything to their own page for any of
+this to work.
 
 ## How a scan flows through the app
 
@@ -15,11 +16,12 @@ add anything to their own page for any of this to work.
    (device type, city/region, a salted IP hash — never the raw IP), fires a
    push notification to the advertiser, and renders a hosted opt-in page
    (`app/r/[code]/OfferForm.tsx`) showing the business name.
-3. The visitor enters name + email (phone optional) — required to
-   continue. That POSTs to `/api/leads` (`app/api/leads/route.ts`), which
-   saves the lead, notifies the advertiser, and the page then forwards the
-   visitor on to `ad_slots.destination_url` — the advertiser's actual site,
-   completely unmodified.
+3. The visitor can optionally enter name + email (phone optional) and hit
+   Continue, or just click "skip" — either way they end up at
+   `ad_slots.destination_url`, the advertiser's actual site, completely
+   unmodified. Submitting the form POSTs to `/api/leads`
+   (`app/api/leads/route.ts`), which saves the lead and notifies the
+   advertiser before forwarding on.
 4. The advertiser dashboard (`app/dashboard`) shows scan counts and the
    lead list per ad slot, scoped to just their own data by Supabase RLS.
    From there they can enable push notifications
