@@ -17,7 +17,7 @@ export function SiteHeader() {
           </SignedIn>
           <Link href="/privacy">Privacy</Link>
           <SignedOut>
-            <SignInButton mode="modal">
+            <SignInButton mode="modal" forceRedirectUrl="/dashboard">
               <button>Advertiser sign in</button>
             </SignInButton>
           </SignedOut>

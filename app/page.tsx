@@ -87,7 +87,7 @@ export default function HomePage() {
                 See how it works
               </a>
               <SignedOut>
-                <SignInButton mode="modal">
+                <SignInButton mode="modal" forceRedirectUrl="/dashboard">
                   <button>Already advertising? Sign in</button>
                 </SignInButton>
               </SignedOut>
@@ -171,8 +171,9 @@ export default function HomePage() {
           </div>
           <div className="site-footer__links">
             <Link href="/privacy">Privacy policy</Link>
+            <Link href="/admin">Admin</Link>
             <SignedOut>
-              <SignInButton mode="modal">
+              <SignInButton mode="modal" forceRedirectUrl="/dashboard">
                 <button>Advertiser sign in</button>
               </SignInButton>
             </SignedOut>
