@@ -86,16 +86,13 @@ button:disabled {
 }
 
 .site-header__brand {
-  font-family: var(--font-display), sans-serif;
-  font-weight: 800;
-  font-size: 1.15rem;
-  color: white;
-  text-decoration: none;
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
 }
 
-.site-header__brand-accent {
-  color: var(--gold);
+.site-header__brand img {
+  border-radius: 50%;
+  display: block;
 }
 
 .site-header__nav {
@@ -321,6 +318,17 @@ button:disabled {
   align-items: flex-start;
   gap: 1.5rem;
   flex-wrap: wrap;
+}
+
+.site-footer__brand {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.site-footer__brand img {
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .site-footer strong {

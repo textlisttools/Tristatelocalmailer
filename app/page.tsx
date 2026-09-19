@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -146,14 +147,17 @@ export default function HomePage() {
 
       <footer className="site-footer">
         <div className="site-footer__inner">
-          <div>
-            <strong>KYOVA Spotlight</strong>
-            <p>Serving Kentucky, Ohio &amp; West Virginia</p>
-            <p>
-              <a href="mailto:postcard@kyovaspotlight.com">postcard@kyovaspotlight.com</a>
-              {" · "}
-              <a href="tel:+13049623018">304-962-3018</a>
-            </p>
+          <div className="site-footer__brand">
+            <Image src="/icon-512.png" alt="" width={40} height={40} />
+            <div>
+              <strong>KYOVA Spotlight</strong>
+              <p>Serving Kentucky, Ohio &amp; West Virginia</p>
+              <p>
+                <a href="mailto:postcard@kyovaspotlight.com">postcard@kyovaspotlight.com</a>
+                {" · "}
+                <a href="tel:+13049623018">304-962-3018</a>
+              </p>
+            </div>
           </div>
           <div className="site-footer__links">
             <Link href="/privacy">Privacy policy</Link>

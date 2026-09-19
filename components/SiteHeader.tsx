@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
@@ -8,7 +9,7 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="site-header__inner">
         <Link href="/" className="site-header__brand">
-          <span className="site-header__brand-accent">KYOVA</span> Spotlight
+          <Image src="/icon-512.png" alt="KYOVA Spotlight" width={44} height={44} priority />
         </Link>
         <nav className="site-header__nav">
           <SignedIn>
